@@ -12,7 +12,7 @@ export default function AboutMe() {
   return (
     <section
       id="about"
-      className="lg:h-screen  bg-[#38A3A5] grid place-items-center lg:place-items-center justify-center md:grid-cols-2  lg:grid-cols-2 gap-0 
+      className="lg:h-screen lg:snap-start lg:snap-always  bg-[#38A3A5] grid place-items-center lg:place-items-center justify-center md:grid-cols-2  lg:grid-cols-2 gap-0 
                  md:h-screen h-auto  "
     >
       <div className=" flex flex-col items-center bettween md:h-[50vh] w-[80vw] md:w-[45vw] lg:h-[50vh] lg:w-[45vw]">

@@ -52,13 +52,14 @@ export default function SinUp() {
     /* global google */
     const initializeGoogle = () => {
       google.accounts.id.initialize({
-        client_id: "820403337294-9cl2p2ljob6eruk3j1ld55p9pmoo6vs7.apps.googleusercontent.com",
+        client_id:
+          "820403337294-9cl2p2ljob6eruk3j1ld55p9pmoo6vs7.apps.googleusercontent.com",
         callback: handleGoogleResponse,
       });
-      google.accounts.id.renderButton(
-        document.getElementById("googleButton"),
-        { theme: "outline", size: "large" }
-      );
+      google.accounts.id.renderButton(document.getElementById("googleButton"), {
+        theme: "outline",
+        size: "large",
+      });
     };
 
     if (window.google) initializeGoogle();
@@ -142,7 +143,11 @@ export default function SinUp() {
       return;
     }
 
-    if (emailNorm === savedEmail && password === savedPassword && savedEmail !== "") {
+    if (
+      emailNorm === savedEmail &&
+      password === savedPassword &&
+      savedEmail !== ""
+    ) {
       setAcceso(true);
       localStorage.setItem("loggedUser", emailNorm);
     } else {
@@ -165,13 +170,19 @@ export default function SinUp() {
   };
 
   return (
-    <div className="lg:h-screen p-6 grid grid-cols-1 grid-flow-row gap-6 items-center md:h-screen h-auto">
+    <div className=" h-auto md:h-screen  lg:snap-start lg:snap-always lg:h-screen p-6 grid grid-cols-1 grid-flow-row gap-6 items-center ">
       {/* CONTACTOS (LIBRE) */}
+      <a
+        href="#main"
+        className="absolute z-1000 m-auto right-[3vw] top-[3vh] bg-emerald-300 p-4 rounded-[5px] font-bold text-blue-950 hover:text-blue-300 hover:bg-blue-950  "
+      >
+        Back
+      </a>
       <div>
-        <h1 className="text-2xl font-bold mb-4">Contact Me !Please!</h1>
+        <h1 className="text-2xl font-bold mb-4">Contact Me !Please! </h1>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-4 mt-4 max-w-md mx-auto p-4 bg-gray-100 rounded-xl shadow"
+          className="flex flex-col gap-2 mt-2 max-w-md mx-auto p-2 bg-gray-100 rounded-xl shadow"
         >
           <input
             type="text"
@@ -188,7 +199,7 @@ export default function SinUp() {
             placeholder="Edad"
             value={formData.edad}
             onChange={handleChange}
-            className="p-2 border border-gray-300 rounded"
+            className="p-1 border border-gray-300 rounded"
             required
           />
           <input
@@ -218,19 +229,21 @@ export default function SinUp() {
       </div>
 
       {/* REGISTRO / LOGIN */}
-      <h1 className="m-5 text-[12px] md:text-2xl lg:text-2xl font-bold">web developer single sign-on</h1>
+      <h1 className="m-2 text-[12px] md:text-2xl lg:text-2xl font-bold">
+        web developer single sign-on
+      </h1>
       <div className="grid grid-cols-1 items-center justify-center m-auto gap-20 md:grid-cols-2 md:grid-flow-col ">
         <form
           onSubmit={handleSaveData}
-          className="flex flex-col gap-2 p-4 border rounded shadow w-[80vw] md:w-[45vw]"
+          className="flex flex-col gap-2 p-2 border-1 border-gray-100 rounded shadow w-[80vw] md:w-[45vw]"
         >
-          <h2 className="text-lg font-bold">Web Developer</h2>
+          <h2 className=" border-1 border-gray-100 text-lg font-bold">Web Developer</h2>
           <input
             type="text"
             placeholder="Nombre"
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
-            className="border p-2 rounded"
+            className="border-[1px] border-gray-300 p-2 rounded"
             required
           />
           <input
@@ -238,7 +251,7 @@ export default function SinUp() {
             placeholder="Correo (Gmail o Hotmail)"
             value={newEmail}
             onChange={(e) => setNewEmail(e.target.value)}
-            className="border p-2 rounded"
+            className="border-[1px] border-gray-300 p-2 rounded"
             required
           />
           <input
@@ -246,7 +259,7 @@ export default function SinUp() {
             placeholder="Contraseña"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            className="border p-2 rounded"
+            className="border-[1px] border-gray-300 p-2 rounded"
             required
           />
           <button
@@ -258,7 +271,7 @@ export default function SinUp() {
         </form>
 
         {!acceso ? (
-          <div className="flex flex-col gap-4 p-4 border rounded shadow w-[80vw] md:w-[40vw]">
+          <div className="flex flex-col gap-2 p-2 border rounded shadow w-[80vw] md:w-[40vw]">
             <form onSubmit={handleLogin} className="flex flex-col gap-2">
               <h2 className="text-lg font-bold">Acceder al contenido</h2>
               <input
@@ -287,12 +300,12 @@ export default function SinUp() {
             <div id="googleButton" className="flex justify-center"></div>
           </div>
         ) : (
-          <div className="p-4 bg-green-100 border rounded shadow w-full text-center">
+          <div className="p-2 bg-green-100 border-1 border-amber-100 rounded shadow w-auto text-center">
             <h2 className="text-xl font-bold">Contenido protegido</h2>
             <p>¡Bienvenido, {savedName || email}!</p>
             {datos.length > 0 && (
               <div className="overflow-y-auto hide-scrollbar border-2 flex flex-col items-center border-amber-200 rounded-[4px] p-2 m-2 max-h-60">
-                <table className="mt-6 border border-gray-300 mx-auto w-full">
+                <table className="mt-3 border border-gray-300 mx-auto w-full">
                   <thead>
                     <tr className="bg-gray-200">
                       <th className="border p-2">Nombre</th>

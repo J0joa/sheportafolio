@@ -2,7 +2,7 @@ export const varMotion = (direction, delay) =>{
     return{
         hidden:{
             y: direction === 'up' ? 40 : direction === 'down' ? -40 : 0,
-            x: direction === 'left' ? 80 : direction === 'right' ? -80 : 0,
+            x: direction === 'left' ? 20 : direction === 'right' ? -20 : 0,
         },
         show:{
             y:0,

@@ -1,7 +1,7 @@
 function Footer({ className }) {
   return (
     <>
-      <footer className=" lg:h-screen  bg-gray-900 text-white py-10 px-6 scroll-mt-20 " id="contacto
+      <footer className="lg:snap-start lg:snap-always lg:h-screen  bg-gray-900 text-white py-10 px-6  " id="contacto
                            md:h-screen
                            h-auto">
         <div className="max-w-7xl mx-auto grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
@@ -18,45 +18,41 @@ function Footer({ className }) {
             <h3 className="font-semibold mb-2">Enlaces rápidos</h3>
             <ul className="space-y-1 text-sm text-gray-300">
               <li>
-                <a href="#inicio" className="hover:text-white">
+                <a href="#main" className="hover:text-white">
                   Main
                 </a>
               </li>
               <li>
-                <a href="#servicios" className="hover:text-white">
+                <a href="#wellcome" className="hover:text-white">
                   Wellcome
                 </a>
               </li>
               <li>
-                <a href="#portafolio" className="hover:text-white">
-                  Portafolio
+                <a href="#aboutme" className="hover:text-white">
+                  About Me
                 </a>
               </li>
               <li>
-                <a href="#contacto" className="hover:text-white">
-                  About Me 
-                </a>
-              </li>
-              <li>
-                <a href="#contacto" className="hover:text-white">
+                <a href="#experience" className="hover:text-white">
                   Experience 
                 </a>
               </li>
               <li>
-                <a href="#contacto" className="hover:text-white">
+                <a href="#projects" className="hover:text-white">
+                  Contact 
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="hover:text-white">
                   Projects
                 </a>
               </li>
               <li>
-                <a href="#contacto" className="hover:text-white">
-                  Services
+                <a href="#contacts" className="hover:text-white">
+                  Contact
                 </a>
               </li>
-              <li>
-                <a href="#contacto" className="hover:text-white">
-                  Contacts
-                </a>
-              </li>
+              
             </ul>
           </div>
 
@@ -64,7 +60,7 @@ function Footer({ className }) {
           <div className = "my-10 mx-4 ">
             <h3 className="font-semibold mb-2">Contacto</h3>
             <ul className="text-sm text-[10px] md:text-[12px] lg:text-[14px]  text-gray-300 space-y-1">
-              <li>Email: contacto@misitioweb.com</li>
+              <li>Email: Emily@misitioweb.com</li>
               <li>Tel: +57 300 123 4567</li>
               <li>Ubicación: Bogotá, Colombia</li>
             </ul>

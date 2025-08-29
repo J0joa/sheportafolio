@@ -21,7 +21,8 @@ function App() {
   return (
     <GoogleOAuthProvider clientId="820403337294-9cl2p2ljob6eruk3j1ld55p9pmoo6vs7.apps.googleusercontent.com">
       <NavProvider>
-        <Main classHeader="" />
+        <div className="snap-y snap-mandatory overflow-y-scroll h-screen" >
+          <Main />
         <Wellcome />
         <AboutMe />
         <Experiece />
@@ -30,6 +31,9 @@ function App() {
         <SinUp />
         <Contact />
         <Footer />
+
+        </div>
+        
       </NavProvider>
     </GoogleOAuthProvider>
   );

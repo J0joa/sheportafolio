@@ -47,7 +47,7 @@ export default function Services() {
   return (
     <section
       id="experience"
-      className=" relative h-screen bg-[#240046] flex flex-col items-center justify-center "
+      className="lg:h-screen lg:snap-start lg:snap-always relative h-screen bg-[#240046] flex flex-col items-center justify-center "
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 lg:w-150 md:w-80 w-20 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-100"></div>
       <div className="pointer-events-none absolute inset-y-0 right-0 lg:w-150 md:w-80 w-20 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-100"></div>
@@ -55,39 +55,49 @@ export default function Services() {
       <div>
         {" "}
         <motion.h1
-        
-        variants={varMotion("right", 0.8)}
-                              initial="hidden"
-                              whileInView={"show"}
-                              viewport={{ once: false, amount: 0.7 }}
-
-        className="text-4xl text-amber-50 font-bold m-5">
+          variants={varMotion("right", 0.8)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.7 }}
+          className="text-4xl text-amber-50 font-bold m-5"
+        >
           {" "}
           Mi Experiencia{" "}
         </motion.h1>
       </div>
 
       <div
-        className={` w-full overflow-hidden ${
-          isMd ? "overflow-hidden w-full" : "w-none"
+        className={` w-full overflow-hidden overflow-x-auto hide-scrollbar ${
+          isMd
+            ? "overflow-hidden overflow-x-auto hide-scrollbar w-full"
+            : "w-none"
         }`}
       >
         <motion.ul
-          // animate={isMd ? { x: ["0%", "-50%"] } : { x: 0 }}
           transition={
             isMd
               ? { repeat: Infinity, duration: 10, ease: "linear" }
               : { repeat: 0, duration: 0, ease: "linear" }
           }
+          drag="x"
+          dragConstraints={{ left: -2000, right: 0 }}
+          dragElastic={0.1}
+          onDragStart={() => controls.stop()}
+          onDragEnd={() => {
+            controls.start({
+              x: [0, -2000],
+              transition: { repeat: Infinity, duration: 20, ease: "linear" },
+            });
+          }}
           onHoverStart={() => controls.stop()}
           onHoverEnd={() =>
             controls.start({
-              x: ["0%", "-50%"],
+              x: [0, -2000],
               transition: { repeat: Infinity, duration: 20, ease: "linear" },
             })
           }
           animate={controls}
-          className={`flex flex-nowrap w-[5000px] gap-5 m-5 text-amber-50 ${
+          className={`  flex flex-nowrap w-[5000px]  gap-5 m-5 text-amber-50 ${
             isMd ? " flex flex-nowrap w-[2000px] m-4   " : ""
           }`}
         >
@@ -105,30 +115,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -150,14 +168,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
-
-
-
-
-
-
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -173,30 +183,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -218,7 +236,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -234,30 +251,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -279,8 +304,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -296,30 +319,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -341,14 +372,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
-
-
-
-
-
-
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -364,30 +387,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
-                            md:text-[12px]
-                            text-[12px] ">
+              <p
+                className="h-[20vh] m-4  font-light
+                            md:text-[12px]      
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -409,7 +440,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -425,30 +455,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -470,9 +508,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
-
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -488,30 +523,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -533,14 +576,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
-
-
-
-
-
-
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -556,30 +591,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -601,7 +644,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -617,30 +659,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -662,9 +712,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
-
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -680,30 +727,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -725,14 +780,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
-
-
-
-
-
-
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -748,30 +795,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -793,7 +848,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -809,30 +863,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -854,7 +916,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -870,30 +931,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -915,14 +984,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
-
-
-
-
-
-
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -938,30 +999,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -983,7 +1052,6 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
 
           <motion.li
             whileHover={{ scale: 1 }}
@@ -999,30 +1067,38 @@ export default function Services() {
                            md:w-[70px] md:h-[70px] md:m-2
                           w-[50px] h-[50px] m-2"
               />{" "}
-              <h2 className="lg:m-4 text-sky-200 font-bold lg:text-2xl
+              <h2
+                className="lg:m-4 text-sky-200 font-bold lg:text-2xl
                             md:m-2 md:text-[15px]
-                            m-1 text-[12px]">
+                            m-1 text-[12px]"
+              >
                 Desarrollo de Frontend REACT, NextJS
               </h2>{" "}
-              <p className="h-[20vh] m-4  font-light
+              <p
+                className="h-[20vh] m-4  font-light
                             md:text-[12px]
-                            text-[12px] ">
+                            text-[12px] "
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>{" "}
-              <p className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
+              <p
+                className="lg:p-8 absolute z-50 rounded-t-2xl lg:h-[46vh] top-0 -translate-y-[563px] group-hover:translate-y-0 bg-black/80 lg:group-hover:block w-full text-2xl font-light transition-transform duration-500 ease-in-out
                             md:p-5  md:text-[20px] md:h-[40vh] 
-                            p-5  text-[12px] h-[33vh]">
+                            p-5  text-[12px] h-[33vh]"
+              >
                 Desarrollo de interfaces interactivas y responsivas utilizando
                 React, integrando APIs REST y optimizando el rendimiento
                 mediante hooks y lazy loading.
               </p>
             </div>
 
-            <div className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
+            <div
+              className="absolute lg:top-78  overflow-hidden mx-auto w-[90%] select-none
                                         md:top-70
-                                        top-55">
+                                        top-55"
+            >
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r  from-[#240046]/100 to-transparent   z-12"></div>
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l  from-[#240046]/100 to-transparent   z-30"></div>
               <motion.div
@@ -1044,22 +1120,14 @@ export default function Services() {
               </motion.div>
             </div>
           </motion.li>
-
-          
-
-          
-
-          
-
-
-
-
-
-
-
-
-          
         </motion.ul>
+
+        <a
+          href="#wellcome"
+          className="absolute z-8 m-auto left-[47vw] top-[90vh] bg-emerald-300 p-4 rounded-[5px] font-bold text-blue-950 hover:text-blue-200 hover:bg-blue-500  "
+        >
+          Back
+        </a>
       </div>
     </section>
   );

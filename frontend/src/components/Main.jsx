@@ -7,7 +7,7 @@ import { varMotion } from "../motion";
 
 function Main({ classHeader }) {
   const contentRef = useRef(null);
-  const [seeNav, setSeeNav] = useState(true);
+  const [seeNav, setSeeNav] = useState(false);
   const [seeNavBig, setSeeNavBig] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -50,7 +50,7 @@ function Main({ classHeader }) {
 
   return (
     <>
-      <div className={classHeader}>
+      <div className="">
         <i
           className="group w-full text-1xl fixed z-11 top-0  px-[5vw]     border-amber-50   bg-red-500  duration-300 ease-in-out hover:scale-[1.001] hover:bg-amber-400  hidden md:block lg:block    bxr   bx-burger"
           onClick={() => setSeeNavb(!seeNavb)}
@@ -113,7 +113,7 @@ function Main({ classHeader }) {
                 <div className="absolute  z-3 transform duration-500 group-hover:-translate-y-10 group-hover:translate-x-10 group-hover:w-14 group-hover:h-14 group-hover:rounded-full group-hover:bg-[#ECBCFD] group-hover:flex group-hover:flex-col group-hover:items-center group-hover:border-7 group-hover:border-amber-300    ">
                   <i className="bxr md:text-2xl lg:text-3xl  bx-face-alt"></i>{" "}
                 </div>
-                <a href="#main" className="absolute top-7 m-4 md:m-2">
+                <a href="#aboutme" className="absolute top-7 m-4 md:m-2">
                   About Me
                 </a>{" "}
               </li>
@@ -229,37 +229,37 @@ function Main({ classHeader }) {
               </li>
               <li className="mx-2 lg:w-[100px] md:w-[73px] m-0  md:m-1  lg:m-1 md:text-[14px] flex flex-col items-center rounded-2xl bg-[#C77DFF] text-amber-100 transition-transfrom duration-1200 ease-out  hover:bg-[#ECBCFD] hover:text-red-900">
                 <i className="bxr md:text-2xl m-2 lg:text-3xl  bx-happy-beaming"></i>{" "}
-                <a href="#Welcome" className="m-2 md:m-2">
+                <a href="#welcome" className="m-2 md:m-2">
                   Welcome
                 </a>{" "}
               </li>
               <li className="mx-2 lg:w-[100px] md:w-[73px] m-0  md:m-1  lg:m-1 md:text-[14px] flex flex-col items-center rounded-2xl bg-[#C77DFF] text-amber-100 transition-transfrom duration-1200 ease-out  hover:bg-[#ECBCFD] hover:text-red-900">
                 <i className="bxr md:text-2xl m-2 lg:text-3xl  bx-face-alt"></i>{" "}
-                <a href="#AboutMe" className="m-2 md:m-2">
+                <a href="#aboutme" className="m-2 md:m-2">
                   About Me
                 </a>
               </li>
               <li className="mx-2 lg:w-[100px] md:w-[73px] m-0  md:m-1  lg:m-1 md:text-[14px] flex flex-col items-center rounded-2xl bg-[#C77DFF] text-amber-100 transition-transfrom duration-1200 ease-out  hover:bg-[#ECBCFD] hover:text-red-900">
-                <i className="bxr md:text-2xl m-2 lg:text-3xl  bx-solar-panel"></i>{" "}
-                <a href="#Experience" className="m-2 md:m-2">
+                <i className="bxr:text-2xl m-2 lg:text-3xl  bx-solar-panel"></i>{" "}
+                <a href="#experience" className="m-2 md:m-2">
                   Experience
                 </a>{" "}
               </li>
               <li className="mx-2 lg:w-[100px] md:w-[73px] m-0  md:m-1  lg:m-1 md:text-[14px] flex flex-col items-center rounded-2xl bg-[#C77DFF] text-amber-100 transition-transfrom duration-1200 ease-out  hover:bg-[#ECBCFD] hover:text-red-900">
                 <i className="bxr md:text-2xl m-2 lg:text-3xl bx-axe"></i>{" "}
-                <a href="#Project" className="m-2 md:m-2">
+                <a href="#projects" className="m-2 md:m-2">
                   Projects
                 </a>{" "}
               </li>
               <li className="mx-2 lg:w-[100px] md:w-[73px] m-0  md:m-1  lg:m-1 md:text-[14px] flex flex-col items-center rounded-2xl bg-[#C77DFF] text-amber-100 transition-transfrom duration-1200 ease-out  hover:bg-[#ECBCFD] hover:text-red-900">
                 <i className="bxr md:text-2xl m-2 lg:text-3xl  bx-store-alt-2"></i>{" "}
-                <a href="Services" className="m-2 md:m-2">
+                <a href="#services" className="m-2 md:m-2">
                   Services
                 </a>{" "}
               </li>
               <li className="mx-2 lg:w-[100px] md:w-[73px] m-0  md:m-1  lg:m-1 md:text-[14px] flex flex-col items-center rounded-2xl bg-[#C77DFF] text-amber-100 transition-transfrom duration-1200 ease-out  hover:bg-[#ECBCFD] hover:text-red-900">
                 <i className="bxr md:text-2xl m-2 lg:text-3xl  bx-phone-book "></i>{" "}
-                <a href="#Contacto " className="m-2 md:m-2">
+                <a href="Contacto" className="m-2 md:m-2">
                   Contacto
                 </a>{" "}
               </li>
@@ -283,7 +283,7 @@ function Main({ classHeader }) {
       >
         <section
           id="main"
-          className="relative grid   md:grid-cols-2 lg:grid-cols-3  md:h-screen lg:h-screen items-center m-4   "
+          className="lg:snap-start lg:snap-always   relative grid   md:grid-cols-2 lg:grid-cols-3  md:h-screen lg:h-screen items-center m-4   "
         >
           {" "}
           <div className="md:col-span-2 lg:col-span-3 md:h-1/8  lg:h-1/4 flex items-center justify-center  ">
@@ -321,12 +321,14 @@ function Main({ classHeader }) {
               ¡Welcome!,
             </h1>
 
-            <div className="absolute top-40 md:top-30 lg:top-30  z-[-1]   lg:group-hover:translate-y-65  lg:group-hover:-translate-x-0 md:group-hover:translate-y-75  md:group-hover:translate-x-10   mx-1 lg:w-[100px] md:w-[73px] m-0  md:m-1  lg:m-1 md:text-[14px] flex flex-col items-center rounded-2xl bg-[#C77DFF] text-amber-100 transition-transfrom duration-1200 ease-out  hover:bg-[#ECBCFD] hover:text-red-900">
+            
+
+            <a href="#contacts" className="absolute top-40 md:top-30 lg:top-30  z-[-1]   lg:group-hover:translate-y-65  lg:group-hover:-translate-x-0 md:group-hover:translate-y-75  md:group-hover:translate-x-10   mx-1 lg:w-[100px] md:w-[73px] m-0  md:m-1  lg:m-1 md:text-[14px] flex flex-col items-center rounded-2xl bg-[#C77DFF] text-amber-100 transition-transfrom duration-1200 ease-out  hover:bg-[#ECBCFD] hover:text-red-900">
               <i className="bxr md:text-1xl m-1 lg:text-3xl  bx-phone-book "></i>{" "}
-              <a href="#Contacto " className="m-1 md:m-1">
+              <span className="m-1 md:m-1">
                 Contacto
-              </a>{" "}
-            </div>
+              </span>{" "}
+            </a>
 
             <h1 className="absolute top-41 md:top-40  z-[-1] transition-transform duration-800  lg:group-hover:translate-y-65 lg:group-hover:translate-x-35 md:group-hover:translate-y-70 md:group-hover:translate-x-33   text-1xl md:text-[14px]  lg:text-[20px] ">
               me, ¡please!.
@@ -344,9 +346,9 @@ function Main({ classHeader }) {
               "Explore more and discover everything that I have prepared for
               you."
             </p>
-            <button className="m-4 w-10 md:w-10 md:h-10   lg:w-15 lg:h-15  text-[15px] bg-amber-300 hover:bg-amber-950 hover:text-amber-100 border-1 border-amber-50 rounded-[8px]">
-              <p className="text-2xl">Go</p>
-            </button>
+            <a href="#wellcome" className=" m-4 w-10 md:w-10 md:h-10   lg:w-15 lg:h-15  text-[15px] lg:bg-amber-300 hover:bg-amber-950 hover:text-amber-100 border-1 border-amber-50 rounded-[8px]">
+              <p className="text-2xl m-2 p-4 ">Go</p>
+            </a>
           </div>
         </section>
         {/* <section

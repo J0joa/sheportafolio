@@ -28,11 +28,13 @@ export default function Services() {
     },
   ];
   return (
-    <section id="services" className="p-5 bg-[#126782] ">
+    <section id="services" className=" lg:h-screen lg:snap-start lg:snap-always p-5 bg-[#126782] ">
       <h1 className="m-4 text-2xl font-bold text-center
-                         md:text-4xl
+                         md:text-3xl
       
-      ">Services</h1>
+      ">Services  <a  href="#wellcome" className=" z-8 m-auto left-[25vw] top-[75vh] bg-emerald-300 p-1 rounded-[5px] font-bold text-blue-950 hover:text-blue-300 hover:bg-blue-950  ">
+            Back
+          </a> </h1>
 
       <ul className="grid grid-flow-col grid-rows-1 overflow-x-auto hide-scrollbar m-4 border-2 border-amber-50 rounded-[7px] ">
         {services.map((i) => (

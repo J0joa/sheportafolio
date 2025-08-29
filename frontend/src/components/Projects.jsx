@@ -99,7 +99,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="lg:h-screen bg-[#7400B8] lg:grid lg:grid-cols-2 lg:items-center lg:justify-center 
+      className="lg:snap-start lg:snap-always lg:h-screen bg-[#7400B8] lg:grid lg:grid-cols-2 lg:items-center lg:justify-center 
       md:grid md:grid-cols-1 md:items-center md:relative md:h-screen
       h-auto"
     >
@@ -112,6 +112,9 @@ export default function Projects() {
           className="  absolute z-7 w-full lg:h-full bg-[#22577A]/70
            h-full"
         ></div>
+         <a  href="#wellcome" className="absolute z-8 m-auto left-[25vw] top-[75vh] bg-emerald-300 p-4 rounded-[5px] font-bold text-blue-950 hover:text-blue-300 hover:bg-blue-950  ">
+            Back
+          </a> 
 
         <div>
           <h2
@@ -122,7 +125,12 @@ export default function Projects() {
             "Un programador que escriba un código limpio, entiende perfectamente
             el problema antes de escribir el código"
           </h2>
+         
+
+          
         </div>
+
+        
 
         <img
           src="/img/font.jpg"
